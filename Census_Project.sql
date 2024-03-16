@@ -1,8 +1,7 @@
-----This project
+----This project is an analysis of Indian Population Census
 
 select *
 from Census_data..Growth;
-
 
 select *
 from Census_data..Population;
@@ -18,7 +17,6 @@ from Census_data..Population;
 
 
 --- Dataset for specific states say 2 states; jharkhand and bihar
-
 
 select *
 from Census_data..Growth
@@ -130,14 +128,12 @@ order by 2 desc;
 
 ---List of States starting with letter A or B
 
-
 select distinct state
 from Census_data..Growth
 where lower(state) like 'A%' or lower(state) like 'B%';
 
 
 ---List of States starting with letter A and ending with letter H
-
 
 select distinct state
 from Census_data..Growth
@@ -157,9 +153,7 @@ on a.district=b.district) as c) as d
 group by d.state;
 
 
-
 ---Total literacy rate by state
-
 
 select d.state, sum(literate_population) as Total_literate_population, sum(illiterate_population) as Total_illiterate_population, (sum(literate_population)+sum(illiterate_population)) as Total_Population
 from
@@ -172,9 +166,7 @@ on a.district=b.district) as c) as d
 group by d.state
 
 
-
 ---Population from previous census by state
-
 
 select d.state, sum(d.previous_census_population) as previous_census_population, sum(d.currect_census_population) currect_census_population
 from
@@ -202,9 +194,7 @@ on a.district=b.district) as c) as d
 group by d.state) as e
 
 
-
 ---Population vs Area
-
 
 select n.total_area/n.Total_Previous_population as previous_population_per_area, n.total_area/n.Total_current_population as current_population_per_area
 from
@@ -231,9 +221,7 @@ from
 from Census_data..Population) as g)as m on h.keyy=m.keyy) as n; 
 
 
-
 ---Window function (This would give an output of top 3 district from each state with highest literacy rate)
-
 
 select a.*
 from
